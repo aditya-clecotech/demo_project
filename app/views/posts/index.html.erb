@@ -1,0 +1,22 @@
+<div class="container-fluid">
+   <nav class="d-flex navbar bg-secondary">
+      <%= link_to "New Post", posts_new_path, class: "text-center btn btn-danger fs-4 m-2" %>
+      <%= link_to "Back", home_path, class: "text-center btn btn-dark fs-4  m-2" %>
+   </nav>
+   <div class="d-flex">
+      <!-- all posts -->
+      <% @posts.each do |post| %>
+      <div class="text-center w-25  m-4 rounded pb-2" style = "background-color: #795548;">
+         <!-- each post -->
+         <div class= "d-flex flex-start align-items-center gap-2 p-1 ms-2 mt-1 mb-3">
+            <%= image_tag "profile-user.png", size: "30x30", class: "rounded-circle " %>
+            <p class = "mb-0 fs-5" ><%= post.user.name %></p>
+         </div>
+         <%= image_tag "post.jpg", size: "120x120" %>
+         <h1 class = "m-3" ><%= post.title %></h1>
+         <%= link_to "View post", post, class: "btn btn-primary fs-5" %>
+      </div>
+      <% end %>
+   </div>
+</div>
+

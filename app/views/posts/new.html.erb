@@ -1,0 +1,15 @@
+<div class="container mt-5">
+   <div class="editor mx-auto w-75 d-flex flex-column text-secondary bg-dark border-secondary p-4 shadow-lg rounded">
+      <p class="text-center fw-bold fs-2 m-3 pb-4 text-warning">New Post</p>
+      <form action= "/posts" method= "post">
+         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+         <input class="form-control mb-3 fs-4" name = "post[title]" placeholder="Title" type="text">
+         <textarea class="form-control mb-3 fs-4" name = "post[content]" placeholder="Describe everything about this post here" rows="6"></textarea>
+         <input class="form-control mb-3 fs-4" name = "post[user_id]" placeholder="User(id)" type="text">
+
+         <%= link_to "Cancel", root_path, class: "btn btn-dark my-3 fs-4" %>
+         <button class="btn btn-warning fs-4 fw-bold" style="color: #121417 !important;">Post</button>
+
+      </form>
+   </div>
+</div>
