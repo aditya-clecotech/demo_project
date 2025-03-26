@@ -7,9 +7,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "manifest", "data-turbo-track": "reload" %>
   </head>
 
   <body>
+
+    <% if notice %>
+      <p class = "text-success fs-2 m-3"><%= flash[:notice] %></p>
+    <% elsif alert %>
+      <p class = "text-danger fs-2 m-3"><%= flash[:alert] %></p>
+    <% end %>
+
     <%= yield %>
+    
   </body>
 </html>
