@@ -13,7 +13,7 @@
          </div>
          <div class="m-3">
             <label class="form-label" for="password">Password:</label>
-            <input class="form-control" name="user[password_digest]" placeholder="Enter password" type="password">
+            <input class="form-control" name="user[password]" placeholder="Enter password" type="password">
          </div>
          <div class="m-3">
             <label class="form-label" for="password_confirmation">Confirm password:</label>
@@ -21,6 +21,7 @@
          </div>
 
          <button class="btn btn-danger m-3 fs-5">Create Account</button>
+         <%= link_to "Cancel", root_path, class: "btn btn-dark my-3 fs-5" %>
       </form>
    </div>
 </div>

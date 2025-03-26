@@ -1,0 +1,20 @@
+
+<div class="container-fluid">
+   <div class="mx-auto w-50 m-5 p-2 fs-5 rounded" style = "background-color: black">
+      <h1 class="text-danger text-center p-3">Sign-In</h1>
+      <form action="/sessions" method="post">
+         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+         <div class="m-3">
+            <label class="form-label" for="email">Email Id:</label>
+            <input class="form-control" name="session[email]" placeholder="Enter your email" type="email">
+         </div>
+         <div class="m-3">
+            <label class="form-label" for="password">Password:</label>
+            <input class="form-control" name="session[password]" placeholder="Enter password" type="password">
+         </div>
+         <button class="btn btn-danger m-3 fs-5">SignIn</button>
+         <%= link_to "Cancel", root_path, class: "btn btn-dark my-3 fs-5" %>
+      </form>
+   </div>
+</div>
