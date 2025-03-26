@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get "/sessions/new", to: "sessions#new"
   post "/sessions", to: "sessions#create"
+  delete "/sessions/:id", to: "sessions#destroy", as: "sessions_destroy"
 
   get "/posts", to: "posts#index"
   get "/posts/new", to: "posts#new"

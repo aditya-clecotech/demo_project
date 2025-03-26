@@ -1,5 +1,27 @@
-<h1 class = "fs-1 text-danger text-center m-2">Hello world - Test Update</h1><br>
-<div class="d-flex">
-   <div class="bg-danger w-100 100-vh text-center border">div</div>
-   <div class="bg-danger w-100 100-vh text-center border">div</div>
+<nav class="navbar navbar-expand-lg bg-secondary d-flex justify-content-between">
+   <%= image_tag "logo.png", size: "105x55", class: "rounded-circle ms-2"%>
+   <% if !current_user.present? %>
+      <div class = "me-2">
+         <%= link_to "SignUp", users_sign_up_path,  class: "text-center btn btn-danger fs-4 m-2" %>
+         <%= link_to "SignIn", sessions_new_path,  class: "text-center btn btn-danger fs-4 m-2" %>
+      </div>
+   <% else %>
+      <%= button_to "Signout", sessions_destroy_path(current_user), method: :delete, class: "text-center btn btn-danger fs-4 m-2" %>
+   <% end %>
+</nav>
+
+<div class="d-flex mt-4">
+      <!-- all posts -->
+      <% @posts.each do |post| %>
+      <div class="text-center w-25  m-4 rounded pb-2" style = "background-color: #795548;">
+         <!-- each post -->
+         <div class= "d-flex flex-start align-items-center gap-2 p-1 ms-2 mt-1 mb-3">
+            <%= image_tag "profile-user.png", size: "30x30", class: "rounded-circle " %>
+            <p class = "mb-0 fs-5" ><%= post.user.name %></p>
+         </div>
+         <%= image_tag "post.jpg", size: "140x130", class: "rounded" %>
+         <h1 class = "m-3" ><%= post.title %></h1>
+         <%= link_to "View post", post, class: "btn btn-primary fs-5" %>
+      </div>
+      <% end %>
 </div>
