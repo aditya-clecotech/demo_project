@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: "User logged in successfully"
     else
-      render :new , alert: "Invalid email or password, please try again!"
-    end
+      flash[:alert] = "Invalid email or password, please try again!"
+      render :new
+    end 
   end
 
   def destroy

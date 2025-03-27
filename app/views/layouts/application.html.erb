@@ -13,9 +13,9 @@
   <body>
 
     <% if notice %>
-      <p class = "text-success fs-2 m-3"><%= flash[:notice] %></p>
+      <p class = "notice"><%= flash[:notice] %></p>
     <% elsif alert %>
-      <p class = "text-danger fs-2 m-3"><%= flash[:alert] %></p>
+      <p class = "alert"><%= flash[:alert] %></p>
     <% end %>
 
     <%= yield %>

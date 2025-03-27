@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.where(user_id: current_user.id)
   end
 
   def show
@@ -24,13 +24,18 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:notice] = 'Post was successfully deleted.'
-      redirect_to posts_url
-    else
-      flash[:alert] = 'Something went wrong'
-      redirect_to posts_url
-    end
+    if @post.user_id == current_user.id
+      if @post.destroy
+        flash[:notice] = 'Post was successfully deleted.'
+        redirect_to posts_url
+      else
+        flash[:alert] = 'Something went wrong'
+        redirect_to posts_url
+      end
+    else 
+      flash[:alert] = 'You are not authorized to delete this post!'
+      redirect_to @post
+    end 
   end
   
   def post_params

@@ -6,22 +6,31 @@
          <%= link_to "SignIn", sessions_new_path,  class: "text-center btn btn-danger fs-4 m-2" %>
       </div>
    <% else %>
+      <h1 class = "fs-2 mt-2 ps-2">Welcome to Posts, <%= current_user.name %></h1>
+   <div class = "d-flex" >
+      <%= link_to "My Posts", posts_path, class: "text-center btn btn-danger fs-4 m-2" %>
       <%= button_to "Signout", sessions_destroy_path(current_user), method: :delete, class: "text-center btn btn-danger fs-4 m-2" %>
+   </div>
    <% end %>
 </nav>
 
-<div class="d-flex mt-4">
-      <!-- all posts -->
-      <% @posts.each do |post| %>
-      <div class="text-center w-25  m-4 rounded pb-2" style = "background-color: #795548;">
-         <!-- each post -->
-         <div class= "d-flex flex-start align-items-center gap-2 p-1 ms-2 mt-1 mb-3">
-            <%= image_tag "profile-user.png", size: "30x30", class: "rounded-circle " %>
-            <p class = "mb-0 fs-5" ><%= post.user.name %></p>
+<% if current_user.present?%>
+   <h1 class = "fs-1 m-1 fw-bold text-danger feed">Your feed</h1>
+   <div class="d-flex mt-4">
+         <!-- all posts -->
+         <% @posts.each do |post| %>
+         <div class="text-center w-25  m-4 rounded pb-2" style = "background-color: #93939366;">
+            <!-- each post -->
+            <div class= "d-flex flex-start align-items-center gap-2 p-1 ms-2 mt-1 mb-3">
+               <%= image_tag "profile-user.png", size: "30x30", class: "rounded-circle " %>
+               <p class = "mb-0 fs-5" ><%= post.user.name %></p>
+            </div>
+            <%= image_tag "post.jpg", size: "140x130", class: "rounded" %>
+            <h1 class = "m-3" ><%= post.title %></h1>
+            <%= link_to "View post", post, class: "btn btn-primary fs-5" %>
          </div>
-         <%= image_tag "post.jpg", size: "140x130", class: "rounded" %>
-         <h1 class = "m-3" ><%= post.title %></h1>
-         <%= link_to "View post", post, class: "btn btn-primary fs-5" %>
-      </div>
-      <% end %>
-</div>
+         <% end %>
+   </div>
+<% else %>
+<h1 class = "fs-2 m-4 ps-2" >Login to see posts</h1>
+<% end %>
