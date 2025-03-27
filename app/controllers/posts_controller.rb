@@ -9,12 +9,12 @@ class PostsController < ApplicationController
 
   def new
     # @user = User.find(params[:id])
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def create
     # @user = User.find(params[:id])
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save 
       redirect_to root_path, notice: "Post created successfully"
     else 
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   end
   
   def post_params
-    params.require(:post).permit(:title, :content, :user_id)
+    params.require(:post).permit(:title, :content)
   end
   
 end
