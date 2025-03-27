@@ -70,3 +70,6 @@ gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails'
 
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'activeadmin'
+gem 'devise'

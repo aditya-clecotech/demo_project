@@ -17,7 +17,7 @@
             <div class="text-center w-25  m-4 rounded pb-2 pt-4" style = "background-color: #93939366;">
                <!-- each post -->
                <%= image_tag "post.jpg", size: "120x120" %>
-               <h1 class = "m-3" ><%= post.title %></h1>
+               <h1 class = "m-3 text-truncate fs-4" ><%= post.title %></h1>
                <%= link_to "View post", post, class: "btn btn-primary fs-5 my-2" %>
             </div>
          <% end %>

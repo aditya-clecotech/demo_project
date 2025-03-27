@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  # get 'posts/index'
-  # get 'posts/show'
-  # get 'posts/new'
-  # get 'sessions/new'
-  # get 'users/index'
-  # get 'users/show'
-  # get 'users/new'
-
+  
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   root "home#index"
 

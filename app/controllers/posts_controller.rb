@@ -8,17 +8,16 @@ class PostsController < ApplicationController
   end
 
   def new
-    # @user = User.find(params[:id])
     @post = current_user.posts.new
   end
 
   def create
-    # @user = User.find(params[:id])
     @post = current_user.posts.new(post_params)
     if @post.save 
       redirect_to root_path, notice: "Post created successfully"
     else 
-      render :new, alert: "something went wrong, while creating post!" 
+      flash[:alert] = "something went wrong, while creating post!" 
+      render :new
     end 
   end
 
