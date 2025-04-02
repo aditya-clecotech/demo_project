@@ -18,13 +18,14 @@
 </div>
 
 <p class = "fs-2">Comments:</p>
-<% if @comments.length > 0 %>
-<ul>
-   <% @comments.each do |comment| %>
-      <li class = "fs-5 text-warning"><%= comment.content %> (User: <%= comment.user_id%>)</li>
-   <% end %>
-</ul>
+<% if @comments.any? %>
+   <ul>
+      <% @comments.each do |comment| %>
+         <li class = "fs-5 text-warning"><%= comment.content %> (User: <%= comment.user_id%>)</li>
+      <% end %>
+   </ul>
 <%end %>
+
 <%= form_with model: @comment, url: "/posts/#{@post.id}/comments", method: :post do |f| %>
    <%= f.text_field :content, class: "form-control", placeholder: "Add comment here.." %>
    <%= f.submit class: "btn btn-primary" %>

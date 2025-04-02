@@ -11,5 +11,11 @@ class Post < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["user"]
   end
-  
+
+  # PostCleanupJob.set(wait: 30.day).perform_later
+
+  def self.clean 
+    PostCleanupJob.perform_later
+  end
+
 end

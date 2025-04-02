@@ -73,3 +73,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'activeadmin'
 gem 'devise'
+
+gem "sidekiq"
+gem "sidekiq-scheduler"
+
+gem "letter_opener"
+gem 'whenever', require: false
