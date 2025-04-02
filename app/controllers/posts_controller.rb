@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments #all comments of that perticular @post
+    @comment = @post.comments.build #model of creating comment
   end
 
   def new

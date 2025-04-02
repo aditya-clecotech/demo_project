@@ -14,4 +14,18 @@
       <%= link_to "Back", root_path, class: "btn btn-dark  fs-5" %>
       <%= button_to "Delete", delete_post_path(@post),method: :delete, class: "btn btn-danger fs-5 d-inline-block mx-2" %>
    </div>
+
 </div>
+
+<p class = "fs-2">Comments:</p>
+<% if @comments.length > 0 %>
+<ul>
+   <% @comments.each do |comment| %>
+      <li class = "fs-5 text-warning"><%= comment.content %> (User: <%= comment.user_id%>)</li>
+   <% end %>
+</ul>
+<%end %>
+<%= form_with model: @comment, url: "/posts/#{@post.id}/comments", method: :post do |f| %>
+   <%= f.text_field :content, class: "form-control", placeholder: "Add comment here.." %>
+   <%= f.submit class: "btn btn-primary" %>
+<% end %>

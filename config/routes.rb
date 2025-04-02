@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get "/posts/:id", to: "posts#show", as: "post"
   post "/posts", to: "posts#create"
   delete "/posts/:id", to: "posts#destroy", as: "delete_post"
+
+
+  post "/posts/:post_id/comments", to: "comments#create"
 
   get "up" => "rails/health#show", as: :rails_health_check
 
