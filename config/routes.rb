@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 
   post "/posts/:post_id/comments", to: "comments#create"
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  resources :payments, only: %i[new]
+
+  post "payments/create" 
+  get "payments/success"
+  get "payments/cancel"
 
 end

@@ -79,3 +79,7 @@ gem "sidekiq-scheduler"
 
 gem "letter_opener"
 gem 'whenever', require: false
+
+
+gem 'dotenv-rails'
+gem 'stripe'

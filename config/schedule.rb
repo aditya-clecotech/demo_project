@@ -9,10 +9,11 @@
 #
 #   command "/usr/bin/some_great_command"
 #   rake "some:great:rake:task"
-set :environment, "development"
-set :output, "log/cron.log"
+set :environment, "development"  #Sets the environment to run during development mode (Set to production by default)
 
-every 1.minute do
+set :output, "log/cron.log" #Creates a output log for you to view previously run cron jobs
+
+every 1.month do
   runner "Post.clean"
 end
 
