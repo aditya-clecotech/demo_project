@@ -5,12 +5,24 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(@post.user_id)
     @comments = @post.comments #all comments of that perticular @post
     @comment = @post.comments.build #model of creating comment
   end
 
   def new
-    @post = current_user.posts.new
+    if current_user&.subscription&.active?
+      if current_user.subscription.posts_allowed.nil?
+        @post = current_user.posts.new
+      elsif current_user.posts.count < current_user.subscription.posts_allowed
+        @post = current_user.posts.new
+      else
+        flash[:alert] = "Post creating limit exceeded!!"
+        redirect_to posts_path
+      end 
+    else 
+      redirect_to new_payment_path
+    end 
   end
 
   def create
@@ -21,6 +33,29 @@ class PostsController < ApplicationController
       flash[:alert] = "something went wrong, while creating post!" 
       render :new
     end 
+
+    # if current_user&.subscription&.active?
+    #   if current_user.subscription.posts_allowed.nil?
+    #     @post = current_user.posts.new(post_params)
+    #     if @post.save 
+    #       redirect_to root_path, notice: "Post created successfully"
+    #     else 
+    #       flash[:alert] = "something went wrong, while creating post!" 
+    #       render :new
+    #     end 
+    #   elsif current_user.posts.count <= current_user.subscription.posts_allowed
+    #     @post = current_user.posts.new(post_params)
+    #     if @post.save 
+    #       redirect_to root_path, notice: "Post created successfully"
+    #     else 
+    #       flash[:alert] = "something went wrong, while creating post!" 
+    #       render :new
+    #     end 
+    #   else
+    #     flash[:alert] = "Members only! Please buy subscription..."
+    #     redirect_to root_path
+    #   end 
+    # end 
   end
 
   def destroy

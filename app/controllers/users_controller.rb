@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "User successfully created"
-      redirect_to new_payment_path
+      redirect_to root_path
     else
       flash[:alert] = "Something went wrong while creating user!"
       render 'new'

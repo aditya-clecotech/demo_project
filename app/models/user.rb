@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
    has_secure_password
    has_many :posts, dependent: :destroy
+   has_many :comments, dependent: :destroy
    validates :name, presence: true
    validates :email, presence: true, uniqueness: true
    validates :password, presence: true, confirmation: true
@@ -16,4 +17,5 @@ class User < ApplicationRecord
       ["created_at", "email", "id", "id_value", "name", "password_digest", "updated_at"]
    end
    
+   has_one :subscription, dependent: :destroy
 end

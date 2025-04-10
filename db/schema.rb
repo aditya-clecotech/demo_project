@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_02_063634) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_09_065001) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -56,6 +56,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_02_063634) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "posts_allowed"
+    t.string "stripe_price_id"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -67,4 +77,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_02_063634) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "subscriptions", "users"
 end

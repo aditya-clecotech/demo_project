@@ -6,12 +6,12 @@
       <h3 class="card-title my-2"><b>Title: </b> <%= @post.title %></h3>
       <p class="card-text fs-4"><b>Content: </b><%= @post.content %></p>
       <div class = "fs-5-sm pt-3" >
-         <p class = " mb-0">Created by: <%= current_user.name%></p>
+         <p class = " mb-0">Created by: <%= @user.name%></p>
          <p class = "">On: <%= @post.created_at.strftime("%B %d, %Y")%></p>
       </div>
    </div>
    <div class = "d-flex">
-      <%= link_to "Back", root_path, class: "btn btn-dark  fs-5" %>
+      <%= link_to "Back", posts_path, class: "btn btn-dark  fs-5 text-decoration-none text-white" %>
       <%= button_to "Delete", delete_post_path(@post),method: :delete, class: "btn btn-danger fs-5 d-inline-block mx-2" %>
    </div>
 
