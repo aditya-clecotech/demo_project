@@ -1,0 +1,24 @@
+<div class="container-fluid">
+   <div class="mx-auto w-50 m-5 p-2 fs-5-sm rounded" style = "background-color: black">
+      <h1 class="text-danger text-center p-3">Create Plan</h1>
+
+      <form action="/plans/create" method="post">
+         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+         <div class="m-3">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-control w-100" name="plan[name]" placeholder="Enter name of your plan" type="text">
+         </div>
+         <div class="m-3">
+            <label class="form-label" for="posts_allowed">No. of Posts Allowed:</label>
+            <input class="form-control w-100" name="plan[posts_allowed]" placeholder="Enter no. of posts you allowed to user" type="number">
+         </div>
+         <div class="m-3">
+            <label class="form-label" for="price">Price (RS):</label>
+            <input class="form-control w-100" name="plan[price_in_rupees]" placeholder="Enter price of your plan" type="number">
+         </div>
+
+         <button class="btn btn-danger m-3 fs-5">Create Plan</button>
+         <%= link_to "Cancel", root_path, class: "btn btn-dark my-3 fs-5 text-decoration-none text-white" %>
+      </form>
+   </div>
+</div>

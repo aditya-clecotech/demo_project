@@ -33,4 +33,6 @@ Rails.application.routes.draw do
   get "payments/success"
   get "payments/cancel"
 
+  resources :plans, only: %i[new]
+  post "plans/create"
 end
