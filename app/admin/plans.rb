@@ -5,7 +5,7 @@
 #   #
 #   # Uncomment all parameters which should be permitted for assignment
 #   #
-#   permit_params :name, :posts_allowed, :price_in_rupees
+#   permit_params :name, :stripe_product_id, :stripe_price_id, :posts_allowed, :price_in_rupees
 #   #
 #   # or
 #   #

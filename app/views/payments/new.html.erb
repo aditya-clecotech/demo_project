@@ -22,108 +22,49 @@
 </div>
 
 <p class="fw-lighter text-center fs-5-sm">Select one of your favorite package and get the facilities.</p>
-<h6 class="text-center">Monthly</h6>
+<h6 class="text-center pb-2">Monthly</h6>
 
 
 <div class="w-100">
-   <div class="d-flex justify-items-center justify-content-center">
+   <div class="mx-3 d-flex justify-items-center justify-content-center">
+      <div class = "row row-cols-4 g-2">
+         <% @plan_ids = Plan.ids %> 
+         <% @plan_ids.each do |id| %>
+            <div class = "col">
+               <% plan = Plan.find(id) %>
+               <div class="border border-danger m-2 mt-3 rounded p-4">
+                  <p class="fs-4 fw-bold m-1"><%= plan.name.upcase.gsub(/[_-]/, " ") %></p> 
+                  <div class="bg-danger rounded" style="height: 2px; width: 200px;"></div> 
 
-      <div class="border border-danger m-2 mt-5 rounded p-4">
-         <p class="fs-4 fw-bold m-1">Gold</p> 
-         <div class="bg-danger rounded" style="height: 2px; width: 200px;"></div> 
+                  <div class="d-flex align-items-center mt-4">
+                     <h5 class = "p-1 fw-light">₹</h5>
+                     <h2><%= plan.price_in_rupees %>.00/-</h2>
+                  </div>
 
-         <div class="d-flex align-items-center mt-4">
-            <h5 class = "p-1 fw-light">₹</h5>
-            <h2>799.00/-</h2>
-         </div>
+                  <div class = "mt-3">
+                     <div class="d-flex aligned-items-center">
+                        <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
+                        <p class="fs-5-xsm fw-lighter ps-2">Create up to <b><%= plan.posts_allowed %></b> posts per month</p>
+                     </div>
+                     <div class="d-flex aligned-items-center">
+                        <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
+                        <p class="fs-5-xsm fw-lighter ps-2">Perfect for power users</p>
+                     </div>
+                     <div class="d-flex aligned-items-center">
+                        <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
+                        <p class="fs-5-xsm fw-lighter ps-2">Billed monthly</p>
+                     </div>
+                     <div class="d-flex aligned-items-center">
+                        <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
+                        <p class="fs-5-xsm fw-lighter ps-2">Upgrade or cancel anytime</p>
+                     </div>
+                  </div>
 
-         <div class = "mt-3">
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Create up to 51 posts per month</p>
+                  <%= button_to "Get Started", payments_create_path(plan: plan.name ), method: :post, class: "btn btn-danger my-2 text-white text-decoration-none fs-5" %>
+
+               </div>
             </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Perfect for power users</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Billed monthly</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Upgrade or cancel anytime</p>
-            </div>
-         </div>
-
-         <%= button_to "Get Started", payments_create_path(plan: "Gold_post"), method: :post, class: "btn btn-danger my-2 text-white text-decoration-none" %>
-
+         <% end %>
       </div>
-
-      <div class=" border border-danger m-2 mb-5 rounded p-4 pb-0">
-
-         <p class="fs-4 fw-bold m-1">Silver</p> 
-         <div class="bg-danger rounded " style="height: 2px; width: 200px;"></div>   
-
-         <div class="d-flex align-items-center mt-4">
-            <h5 class = "p-1 fw-light">₹</h5>
-            <h2>449.00/-</h2>
-         </div>
-
-         <div class = "mt-3">
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Create up to 21 posts per month</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Great for casual readers</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Billed monthly</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Flexible upgrade or cancellation</p>
-            </div>
-         </div>
-
-         <%= button_to "Get Started", payments_create_path(plan: "Silver_post"), method: :post, class: "btn btn-danger my-2 text-white text-decoration-none" %>
-
-      </div>
-
-      <div class=" border border-danger m-2 mt-5 rounded p-4">
-         <p class="fs-4 fw-bold m-1">Premium</p> 
-         <div class="bg-danger rounded" style="height: 2px; width: 200px;"></div> 
-
-         <div class="d-flex align-items-center mt-4">
-            <h5 class = "p-1 fw-light">₹</h5>
-            <h2>200.00/-</h2>
-         </div>
-
-         <div class = "mt-3">
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Create <b>Unlimited</b> posts per month</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Best value for power users</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Billed monthly</p>
-            </div>
-            <div class="d-flex aligned-items-center">
-               <%= image_tag "checked.png", size: "20x20", class: "my-0"%>
-               <p class="fs-5-xsm fw-lighter ps-2">Includes future premium features</p>
-            </div>
-         </div>
-
-         <%= button_to "Get Started", payments_create_path(plan: "premium"), method: :post, class: "btn btn-danger my-2 text-white text-decoration-none" %>
-
-      </div>
-
    </div>
 </div>
