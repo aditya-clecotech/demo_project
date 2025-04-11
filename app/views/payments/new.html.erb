@@ -22,8 +22,7 @@
 </div>
 
 <p class="fw-lighter text-center fs-5-sm">Select one of your favorite package and get the facilities.</p>
-<h6 class="text-center pb-2">Monthly</h6>
-
+<h5 class="text-center pb-2 d-flex justify-content-center align-items-center"><span class = "text-danger fs-2 pe-2">«</span> Monthly <span class = "text-danger fs-2 ps-2">»</span></h5>
 
 <div class="w-100">
    <div class="mx-3 d-flex justify-items-center justify-content-center">
@@ -33,7 +32,7 @@
             <div class = "col">
                <% plan = Plan.find(id) %>
                <div class="border border-danger m-2 mt-3 rounded p-4">
-                  <p class="fs-4 fw-bold m-1"><%= plan.name.upcase.gsub(/[_-]/, " ") %></p> 
+                  <p class="fs-4 fw-bold m-1"><%= plan.name.titleize.gsub(/[_-]/, " ") %></p> 
                   <div class="bg-danger rounded" style="height: 2px; width: 200px;"></div> 
 
                   <div class="d-flex align-items-center mt-4">
@@ -68,3 +67,4 @@
       </div>
    </div>
 </div>
+
